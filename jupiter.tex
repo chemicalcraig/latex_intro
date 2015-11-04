@@ -92,7 +92,19 @@
 % 	Special Characters
 %
 \begin{frame}{Special Characters, commands, and comments}
-
+\begin{itemize}
+	\item Special characters
+	\begin{itemize}
+		\item tells \LaTeX{} to do something, won't print like you intend
+		\item \# \$ \% \^{} \& \_ \{ \} \~{}
+\textbackslash
+	\end{itemize}
+	\item \LaTeX commands
+	\begin{itemize}
+		\item Start with a \textbackslash, i.e. \textbackslash backslash, \textbackslash alpha$\rightarrow \alpha$
+	\end{itemize}
+	\item Comment lines with \%
+\end{itemize}
 \end{frame}
 
 %
@@ -100,7 +112,14 @@
 %
 \section{File Structure and Layout}
 \begin{frame}{Input file structure and layout}
-
+\begin{itemize}
+	\item	Preamble
+	\begin{itemize}
+		\item	Contains all formatting directions and information not directly related to content
+		\item Authors, date, institutions, title, external packages \\
+		\only<1>{\VerbatimInput{headerexample.tex}}
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 %
