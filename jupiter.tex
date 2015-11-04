@@ -5,6 +5,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize}
 \author{Jupiter Subgroup}
 \title{Introduction to Making Documents with \LaTeX}
 %\setbeamercovered{transparent} 
@@ -54,9 +58,12 @@
 %
 \begin{frame}{How it Works}
 \begin{enumerate}
-	\item The \TeX{} typesetting engine reads a plain text file, usually written using \LaTeX{} (a set of \TeX{} macros), 
-	\item<2-> Produces a readable, formatted document image (.dvi)
-	\item<3-> Convert to pdf
+	\item The \TeX{} typesetting engine reads a plain text file, usually written using \LaTeX{} (a set of \TeX{} macros) \\
+	\only<1>{\VerbatimInput{hello.tex}} 
+	\item<2-> Produces a readable, formatted document image (.dvi) \\
+		\only<2>{\includegraphics[scale=0.3]{hello_cli}}
+	\item<3-> Convert to pdf (or straight to pdf using pdflatex)\\
+			\only<3>{\includegraphics[scale=.3]{hello}}
 \end{enumerate}
 \only<4> {Separates design from content $\rightarrow$ enhanced logical structure}
 \end{frame}
@@ -69,9 +76,10 @@
 	\item Text editor or IDE
 	\begin{itemize}
 		\item Texmaker, Vim/Emacs/gedit with plugins, Notepad++, Sublime
-		\item Look for built-in output viewer, code completion
+		\item Look for built-in output viewer, code completion \\
+		\only<1>{\includegraphics[scale=0.1]{texmaker}}
 	\end{itemize}
-	\item Sane \LaTeX{} installation
+	\item<2> Sane \LaTeX{} installation
 	\begin{itemize}
 		\item Windows - MikTeX
 		\item Mac - MacTeX
