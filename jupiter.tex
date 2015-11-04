@@ -7,8 +7,9 @@
 \usepackage{graphicx}
 \usepackage{verbatim}
 \usepackage{fancyvrb}
-\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
-{fontsize=\footnotesize}
+\usepackage{hyperref}
+\usepackage{color}
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{fontsize=\tiny}
 \author{Jupiter Subgroup}
 \title{Introduction to Making Documents with \LaTeX}
 %\setbeamercovered{transparent} 
@@ -113,12 +114,13 @@
 \section{File Structure and Layout}
 \begin{frame}{Input file structure and layout}
 \begin{itemize}
-	\item	Preamble
+	\item<1->	Preamble
 	\begin{itemize}
-		\item	Contains all formatting directions and information not directly related to content
+		\item	Contains document type and all formatting directions and information not directly related to content
 		\item Authors, date, institutions, title, external packages \\
-		\only<1>{\VerbatimInput{headerexample.tex}}
+		\only<1->{\VerbatimInput{header_example.tex}}
 	\end{itemize}
+	\item<2> \textbackslash begin\{document\} \ldots \textbackslash end\{document\}
 \end{itemize}
 \end{frame}
 
@@ -126,7 +128,19 @@
 % 	Packages
 %
 \begin{frame}{Packages and external files}
-http://www.howtotex.com/packages/9-essential-latex-packages-everyone-should-use/
+\begin{itemize}
+	\item Packages add customization and fine tuning
+	\item Commonly used:
+	\begin{itemize}
+		\item amsmath -- must have for mathematical formulae
+		\item geometry -- adjust page margins
+		\item graphicx -- including images
+		\item nag -- ensures up to date syntax
+		\item cleverref -- manages references in a clever way
+		\item hyperref -- functional document and hyperlinks
+	\end{itemize}
+	\item See: \href{http://www.howtotex.com/packages/9-essential-latex-packages-everyone-should-use/}{{\small \color{blue}{http://www.howtotex.com/packages/9-essential-latex-packages-everyone-should-use/}}}
+\end{itemize}
 \end{frame}
 
 %
@@ -134,13 +148,81 @@ http://www.howtotex.com/packages/9-essential-latex-packages-everyone-should-use/
 %
 \section{Typesetting}
 \begin{frame}{Typesetting}
-paragraphs, line and page breaks, hyphenation, sections, chapters, alignment, itemize, enumerate, font sizes (table 6.3, 6.4)
+\begin{columns}
+	\begin{column}[T]{0.6\textwidth}
+		\begin{itemize}
+			\item Paragraphs and sentences
+			\begin{itemize}
+			\scriptsize
+				\item	paragraphs broken by empty line
+				\item 	extra spaces after period ignored
+				\item 	line break without new paragraph \textbackslash \textbackslash{} or \textbackslash newline
+				\item \textbackslash \textbackslash* prohibits page break after new line
+				\item \textbackslash newpage starts a new page
+				\item be careful after equations 
+			\end{itemize}
+		\end{itemize}
+	\end{column}
+	\begin{column}[T]{6cm}
+	\only<1>{\includegraphics[scale=.4]{tdse-break}}
+	\end{column}
+\end{columns}
+hyphenation, sections, chapters, alignment, itemize, enumerate, font sizes (table 6.3, 6.4)
+\end{frame}
+
+%Sections
+\begin{frame}{Typesetting}
+\begin{itemize}
+	\item Organize content in outline form using Sections, subsections, chapters, and subchapters \\
+	\only<1>{\includegraphics[scale=.4]{sections}}
+\end{itemize}
+\end{frame}
+
+%Lists
+\begin{frame}[fragile]\frametitle{Typesetting}
+\begin{itemize}
+	\item Make lists with ``itemize'' and ``enumerate'' environments \\
+	\only<1>{\includegraphics[scale=.4]{list1}}
+	\only<2>{\includegraphics[scale=.4]{list2}}
+	\begin{verbatim}
+\begin{enumerate}
+	\item This is an enumerated list
+	\begin{enumerate}
+			\item with a nested list
+	\end{enumerate}
+	\item second item
+\end{enumerate}
+\end{verbatim}
+\begin{enumerate}
+	\item This is an enumerated list
+	\begin{enumerate}
+			\item with a nested list
+	\end{enumerate}
+	\item second item
+\end{enumerate}
+\end{itemize}
 \end{frame}
 
 %
 % 	File Structure
 %
-\begin{frame}{Some useful commands and characters}
+\begin{frame}[fragile]\frametitle{Some useful commands and characters}
+\begin{itemize}
+	\item bold, italic, underline
+	\begin{itemize}
+		\item \verb+\textbf{bold}+$\rightarrow$\textbf{bold}
+		\item \verb+\textit{italic}+$\rightarrow$\textit{italic}, \verb+\emph{italic}+$\rightarrow$\emph{italic}
+		\item \verb+\underline{underline}+$\rightarrow$\underline{underline}
+	\end{itemize}
+	\item other stuff
+	\begin{itemize}
+		\item superscript \verb+$^{...}$+ A$^{n}$
+		\item subscript \verb+$_{...}$+ A$_{n}$
+		\item degree  \verb+$^\circ$C+$\rightarrow^\circ$C
+		\item quotation uses two grave accents (`) and two vertical quotation marks ('), ``A''
+		\item Greek \verb+$\alpha_{\textrm{n}}^i$+ $\alpha_{\textrm{n}}^i$
+	\end{itemize}
+\end{itemize}
 emph, bold, under, degree, tilde, quotation, \"{o}, A$^{n}$, $\alpha_i$
 \end{frame}
 
