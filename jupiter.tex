@@ -12,6 +12,7 @@
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{fontsize=\tiny}
 \author{Jupiter Subgroup}
 \title{Introduction to Making Documents with \LaTeX}
+
 %\setbeamercovered{transparent} 
 %\setbeamertemplate{navigation symbols}{} 
 %\logo{} 
@@ -223,28 +224,215 @@ hyphenation, sections, chapters, alignment, itemize, enumerate, font sizes (tabl
 		\item Greek \verb+$\alpha_{\textrm{n}}^i$+ $\alpha_{\textrm{n}}^i$
 	\end{itemize}
 \end{itemize}
-emph, bold, under, degree, tilde, quotation, \"{o}, A$^{n}$, $\alpha_i$
 \end{frame}
 
 %
 % 	File Structure
 %
-\begin{frame}{Some useful environments}
-verbatim, tabular
+\begin{frame}[fragile]\frametitle{Some useful environments}
+\begin{itemize}
+	\item<1-> \textbf{verbatim} -- direct quote, not interpreted
+		\begin{itemize}
+			\item Good for displaying code
+			\item \verb+\usepackage{verbatim}+ and \verb+\usepackage{fancyvrb}+
+			\begin{itemize}
+				\item \verb+\begin{verbatim}...\end{verbatim}+
+				\item \verb+\verb@...@+
+				\item \verb+\VerbatimInput{hello.cc}+ \\ \VerbatimInput{hello.cc}
+			\end{itemize}
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Some useful environments}
+\begin{itemize}
+	\item<1-> \textbf{tabular} -- the way to make tables
+		\begin{itemize}
+			\item {\footnotesize \verb+\begin{tabular}[position]{table spec}...\end{tabular}+}
+			\begin{itemize}
+				\item 'position' specifies vertical position relative to surrounding text (t,b, or c)
+				\item 'table spec' specifies number of columns and text justification (l,r, or c)
+				\item \& moves to the next column, \verb+\\+ starts a new line, \verb+\hline+ inserts a horizontal line \\
+				\begin{columns}
+				\begin{column}{5cm}
+					\VerbatimInput{table.tex}				
+				\end{column}
+				\begin{column}{5cm}
+					\begin{tabular}{|r|l|}
+					\hline
+					7C0 & hexadecimal \\
+					3700 & octal \\ \cline{2-2}
+					11111000000 & binary \\
+					\hline \hline
+					1984 & decimal \\
+					\hline
+					\end{tabular}
+				\end{column}
+				\end{columns}
+			\end{itemize}
+		\end{itemize}
+\end{itemize}
 \end{frame}
 
 %
 % 	Types of formulae
 %
 \section{Mathematical Formulae}
-\begin{frame}{Mathematical Formulae}
-AMS math, inline, single line display (numbered/unnumbered), multiple line display
+\begin{frame}[fragile]\frametitle{Mathematical Formulae}
+Producing consistent, aesthetically pleasing mathematical formulae is the main strength of \TeX
+\begin{itemize}
+	\item Use \verb+amsmath+ package, included with all installations
+	\begin{itemize}
+		\item \verb+\usepackage{amsmath}+
+	\end{itemize}
+	\item Produced by the American Mathematical Society
+	\item Types of equations
+	\begin{itemize}
+		\item<2> inline -- This, $0.25+\frac{3}{4}=1$, is an inline equation
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]\frametitle{Mathematical Formulae}
+Producing consistent, aesthetically pleasing mathematical formulae is the main strength of \TeX
+\begin{itemize}
+	\item Use \verb+amsmath+ package, included with all installations
+	\begin{itemize}
+		\item \verb+\usepackage{amsmath}+
+	\end{itemize}
+	\item Produced by the American Mathematical Society
+	\item Types of equations
+	\begin{itemize}
+		\item displayed and numbered \\
+			This is a displayed and numbered equation,
+			\begin{align}
+				0.25+\frac{3}{4}=1
+			\end{align}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Mathematical Formulae}
+Producing consistent, aesthetically pleasing mathematical formulae is the main strength of \TeX
+\begin{itemize}
+	\item Use \verb+amsmath+ package, included with all installations
+	\begin{itemize}
+		\item \verb+\usepackage{amsmath}+
+	\end{itemize}
+	\item Produced by the American Mathematical Society
+	\item Types of equations
+	\begin{itemize}
+		\item displayed and unnumbered \\
+			This is a displayed and unnumbered equation,
+			\begin{align*}
+				0.25+\frac{3}{4}=1
+			\end{align*}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Mathematical Formulae}
+Inline equations obtained from math mode with \verb+$...$+
+\begin{itemize}
+	\item Fractions are displayed differently, text is italicised
+	\item reserve for less important formulae
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\VerbatimInput{inline.tex}
+\end{column}
+\begin{column}{0.5\textwidth}
+Add $a$ squared and $b$ squared 
+to get $c$ squared. Or, using 
+a more mathematical approach: 
+$a^2 + b^2 = c^2$ 
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Mathematical Formulae}
+Display equations with \verb+\begin{align}...\end{align}+
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\VerbatimInput{display.tex}
+	\end{column}
+	\begin{column}[T]{0.5\textwidth}
+		Einstein says
+		\begin{align}
+			E = mc^2 
+		\end{align}
+		He didn’t say
+		\begin{align}
+			1 + 1 = 3 
+		\end{align}
+	\end{column}
+\end{columns}
+\only Equation numbers are tracked by a counter, can be manually set \verb+\setcounter{equation}{0}+ \setcounter{equation}{0}\\
+\begin{align}
+			E = mc^2 
+		\end{align}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Mathematical Formulae}
+Display unnumbered equations with \verb+\begin{align*}...\end{align*}+
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\VerbatimInput{display-nonumbered.tex}
+	\end{column}
+	\begin{column}[T]{0.5\textwidth}
+		Einstein says
+		\begin{align*}
+			E = mc^2 
+		\end{align*}
+		He didn’t say
+		\begin{align*}
+			1 + 1 = 3 
+		\end{align*}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Multi-line equations}
+Use \verb+align+ environment for multi-line equations, align with \&. Use \verb+\nonumber+ to omit equation number on specific line
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\VerbatimInput{tdse-align.tex}
+	\end{column}
+	\begin{column}[T]{0.5\textwidth}
+\begin{align}
+	i\hbar\frac{\partial \Psi}{\partial t} = & \hat{H} \Psi \nonumber \\
+	=& E \Psi
+\end{align}
+	\end{column}
+\end{columns}
+\end{frame}
 %
 % 	Useful commands
 %
-\begin{frame}{Some useful commands}
+\begin{frame}[fragile]\frametitle{Some useful commands}
+Greek
+\begin{itemize}
+	\item \verb+\alpha, \beta, gamma+ $\alpha, \beta, \gamma$ \\
+	\item \verb+\varepsilon, \epsilon+ $\varepsilon, \epsilon$ \\
+\end{itemize}
+Sum, integral, product
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\VerbatimInput{sumintprod.tex}
+	\end{column}
+	\begin{column}[T]{0.5\textwidth}
+\begin{align*}
+\sum_{i=1}^n \qquad
+\int_0^{\frac{\pi}{2}} \qquad
+\prod_\epsilon
+\end{align*}
+	\end{column}
+\end{columns}
+\begin{itemize}
+	\item \verb+\hat{H}+ $\hat{H}$
+	\item \verb+\times+ A$\times$B, \verb+\cdot+ A$\cdot$B
+	\item \verb+\partial+ $\partial$
+\end{itemize}
 Greek, super and sub script, sum (substack), integral, product operators, dots, frac, predefined functions, partial
 \end{frame}
 
